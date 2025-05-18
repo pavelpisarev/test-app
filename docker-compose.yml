@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./migrations:/docker-entrypoint-initdb.d
@@ -16,7 +16,7 @@ services:
   microblog-app:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       DB_HOST: microblog-db
       DB_PORT: 5432
