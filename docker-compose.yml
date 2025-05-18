@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  microblog-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: microblog
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+
+  microblog-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: microblog-db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: microblog
+      DB_SSL: false
+    depends_on:
+      - microblog-db
+    restart: on-failure
+
+volumes:
+  pgdata:
