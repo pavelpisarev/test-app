@@ -1,5 +1,9 @@
 const request = require('supertest');
-const { app } = require('./server');
+const { app, server } = require('./server');
+
+afterAll((done) => {
+  server.close(done);
+});
 
 test('GET /health returns OK', async () => {
   const response = await request(app).get('/health');
