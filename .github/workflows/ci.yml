@@ -4,12 +4,20 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'src/**/*'
+      - 'package.json'
+      - 'Dockerfile'
   pull_request:
     branches:
       - master
     types:
       - opened
       - synchronize
+    paths:
+      - 'src/**/*'
+      - 'package.json'
+      - 'Dockerfile'
   workflow_dispatch:
 
 jobs:
