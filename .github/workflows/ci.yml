@@ -61,7 +61,7 @@ jobs:
             -e DB_USER=postgres \
             -e DB_PASSWORD=postgres \
             -e DB_NAME=microblog \
-            microblog-api
+            microblog-app
 
           sleep 10
 
